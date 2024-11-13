@@ -1,0 +1,612 @@
+<!--
+=========================================================
+* IoT Dashboard
+=========================================================
+
+* Template for SRSA project: Create your IoT dashboard
+* Based on the template by: Creative Tim
+* Original Template Page: https://www.creative-tim.com/product/material-dashboard
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../static/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <!-- Title for your webpage -->
+  <title>
+    IoT Dashboard - SRSA
+  </title>
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <!-- Nucleo Icons -->
+  <link href="../static/assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../static/assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../static/assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show  bg-gray-200">
+<!-- Left side bar menu -->
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0"  target="_blank">
+        <img src="../static/assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
+        <span class="ms-1 font-weight-bold text-white">IoT Dashboard SRSA</span>
+      </a>
+    </div>
+    <hr class="horizontal light mt-0 mb-2">
+    <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item"> <!-- li creates an item on a list-->
+          <a class="nav-link text-white active bg-gradient-primary" href="./">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">dashboard</i>
+            </div>
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="./alarms.html">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">alarms</i>
+            </div>
+            <span class="nav-link-text ms-1">Alarms</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+<!-- End left side bar menu -->
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
+          </ol>
+          <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+        </nav>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="container-fluid py-4">
+      <div class="row">
+        <!-- Class card to create the simple cards -->
+        <!-- Temp card -->
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <!-- Icon for this card -->
+              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                <!-- More icons: https://materializecss.com/icons.html -->
+                <i class="material-icons opacity-10">ac_unit</i>
+              </div>
+              <div class="text-end pt-1">
+                <!-- PLACE HERE TEXT FOR THE CARD TITLE -->
+                <p class="text-sm mb-0 text-capitalize">Temperature Zone 1</p>
+                <!-- PLACE HERE THE DATA FROM THE SENSOR!!! -->
+                <h4 class="mb-0">{{ content[0][0] }} C°</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+              <!-- PLACE HERE THE DIFFERENCE OF VALUE FROM LAST VISIT (NEEDS TO BE CALCULATED!) -->
+              <p class="mb-0"><span class="text-sm font-weight-bolder">{{ content[0][5] }} </span>than last visit</p>
+            </div>
+          </div>
+        </div>
+        <!-- END of temperature card -->
+        <!-- Sound card -->
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                <!-- Icon for this card -->
+                <i class="material-icons opacity-10">volume_up</i>
+              </div>
+              <div class="text-end pt-1">
+                <!-- PLACE HERE TEXT FOR THE CARD TITLE -->
+                <p class="text-sm mb-0 text-capitalize">Sound</p>
+                <!-- PLACE HERE THE DATA FROM THE SENSOR!!! -->
+                <h4 class="mb-0">{{ content[1][0] }} dB</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+              <!-- PLACE HERE THE DIFFERENCE OF VALUE FROM LAST VISIT (NEEDS TO BE CALCULATED!) -->
+              <p class="mb-0"><span class=" text-sm font-weight-bolder">{{ content[1][5] }} </span>than last visit</p>
+            </div>
+          </div>
+        </div>
+        <!-- END of sound card -->
+        <!-- Luminosity card -->
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                <!-- Icon for this card -->
+                <i class="material-icons opacity-10">lightbulb_outline</i>
+              </div>
+              <div class="text-end pt-1">
+                <!-- PLACE HERE TEXT FOR THE CARD TITLE -->
+                <p class="text-sm mb-0 text-capitalize">Luminosity</p>
+                <!-- PLACE HERE THE DATA FROM THE SENSOR!!! -->
+                <h4 class="mb-0">{{ content[2][0] }} lux</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+              <!-- PLACE HERE THE DIFFERENCE OF VALUE FROM LAST VISIT (NEEDS TO BE CALCULATED!) -->
+              <p class="mb-0"><span class="text-sm font-weight-bolder">{{content[2][5]}} </span>than last visit</p>
+            </div>
+          </div>
+        </div>
+        <!-- END of Luminosity card -->
+        <!-- Pressure card -->
+        <div class="col-xl-3 col-sm-6">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+                <!-- Icon for this card -->
+                <i class="material-icons opacity-10">arrow_downward</i>
+              </div>
+              <div class="text-end pt-1">
+                <!-- PLACE HERE TEXT FOR THE CARD TITLE -->
+                <p class="text-sm mb-0 text-capitalize">Pressure</p>
+                <!-- PLACE HERE THE DATA FROM THE SENSOR!!! -->
+                <h4 class="mb-0">{{ content[3][0] }} Pa</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+              <!-- PLACE HERE THE DIFFERENCE OF VALUE FROM LAST VISIT (NEEDS TO BE CALCULATED!) -->
+              <p class="mb-0"><span class="text-sm font-weight-bolder">{{ content[3][5] }} </span>than last visit</p>
+            </div>
+          </div>
+        </div>
+        <!-- END of pressure card -->
+      </div>
+      <!-- END of simple card section -->
+      <!-- Timeline series cards section -->
+      <div class="row mt-4">
+        <!-- Timeline series card for temperature -->
+        <div class="col-lg-4 mt-4 mb-3">
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+             <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+               <div class="chart">
+                  <canvas id="chart-line-temp" class="chart-canvas" height="170"></canvas>
+               </div>
+             </div>
+            </div>
+            <div class="card-body">
+              <h6 class="mb-0 ">Temperature Zone 1</h6>
+             <p class="text-sm ">Last five values in C°</p>
+             <p class="mb-2 ">Mean: {{ stats[0][0] }}</p>
+             <p class="mb-2 ">Std: {{ stats[0][1] }}</p>
+            </div>
+          </div>
+         </div>
+        <!-- End of timeline series card for temperature -->
+        <!-- Timeline series card for sound -->
+        <div class="col-lg-4 mt-4 mb-3">
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+                <div class="chart">
+                  <canvas id="chart-line-sound" class="chart-canvas" height="170"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <h6 class="mb-0 ">Sound</h6>
+              <p class="text-sm ">Last five values in dB</p>
+              <p class="mb-2 ">Mean: {{ stats[1][0] }}</p>
+              <p class="mb-2 ">Std: {{ stats[1][1] }}</p>
+            </div>
+          </div>
+        </div>
+        <!-- End of timeline series card for sound -->
+        <!-- Timeline series card for luminosity -->
+        <div class="col-lg-4 mt-4 mb-3">
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-success shadow-success border-radius-lg py-3 pe-1">
+                <div class="chart">
+                  <canvas id="chart-line-luminosity" class="chart-canvas" height="170"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <h6 class="mb-0 ">Luminosity</h6>
+              <p class="text-sm ">Last five values in lux</p>
+              <p class="mb-2 ">Mean: {{ stats[2][0] }}</p>
+              <p class="mb-2 ">Std: {{ stats[2][1] }}</p>
+            </div>
+          </div>
+        </div>
+        <!-- End of timeline series card for luminosity -->
+        <!-- Timeline series card for pressure -->
+        <div class="col-lg-4 mt-4 mb-3">
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-info shadow-info border-radius-lg py-3 pe-1">
+                <div class="chart">
+                  <canvas id="chart-line-pressure" class="chart-canvas" height="170"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <h6 class="mb-0 ">Pressure</h6>
+              <p class="text-sm ">Last five values in Pa</p>
+              <p class="mb-2 ">Mean: {{ stats[3][0] }}</p>
+              <p class="mb-2 ">Std: {{ stats[3][1] }}</p>
+            </div>
+          </div>
+        </div>
+        <!-- End of timeline series card for luminosity -->
+      </div>
+    </div>
+  </main>
+
+<!--   Core JS Files   -->
+<script src="../static/assets/js/plugins/chartjs.min.js"></script>
+<!-- CREATION OF CHARTS FOR HISTORICAL DATA -->
+<script>
+
+  var ctx = document.getElementById("chart-line-temp").getContext("2d");
+
+  new Chart(ctx, {
+    type: "line",
+    data: {
+  
+      labels: ["S1", "S2", "S3", "S4", "S5"],
+      datasets: [{
+        label: "Temperature",
+        tension: 0,
+        borderWidth: 0,
+        pointRadius: 5,
+        pointBackgroundColor: "rgba(255, 255, 255, .8)",
+        pointBorderColor: "transparent",
+        borderColor: "rgba(255, 255, 255, .8)",
+        borderWidth: 4,
+        backgroundColor: "transparent",
+        fill: true,
+  
+        data: {{ temp }},
+        maxBarThickness: 6
+
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: true,
+            drawOnChartArea: true,
+            drawTicks: false,
+            borderDash: [5, 5],
+            color: 'rgba(255, 255, 255, .2)'
+          },
+          ticks: {
+            display: true,
+            padding: 10,
+            color: '#f8f9fa',
+            font: {
+              size: 14,
+              weight: 300,
+              family: "Roboto",
+              style: 'normal',
+              lineHeight: 2
+            },
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+            borderDash: [5, 5]
+          },
+          ticks: {
+            display: true,
+            color: '#f8f9fa',
+            padding: 10,
+            font: {
+              size: 14,
+              weight: 300,
+              family: "Roboto",
+              style: 'normal',
+              lineHeight: 2
+            },
+          }
+        },
+      },
+    },
+  });
+
+  var ctx2 = document.getElementById("chart-line-sound").getContext("2d");
+
+  new Chart(ctx2, {
+    type: "line",
+    data: {
+  
+      labels: ["S1", "S2", "S3", "S4", "S5"],
+      datasets: [{
+        label: "Sound",
+        tension: 0,
+        borderWidth: 0,
+        pointRadius: 5,
+        pointBackgroundColor: "rgba(255, 255, 255, .8)",
+        pointBorderColor: "transparent",
+        borderColor: "rgba(255, 255, 255, .8)",
+        borderWidth: 4,
+        backgroundColor: "transparent",
+        fill: true,
+
+        data: {{ sound }},
+        maxBarThickness: 6
+
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: true,
+            drawOnChartArea: true,
+            drawTicks: false,
+            borderDash: [5, 5],
+            color: 'rgba(255, 255, 255, .2)'
+          },
+          ticks: {
+            display: true,
+            padding: 10,
+            color: '#f8f9fa',
+            font: {
+              size: 14,
+              weight: 300,
+              family: "Roboto",
+              style: 'normal',
+              lineHeight: 2
+            },
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+            borderDash: [5, 5]
+          },
+          ticks: {
+            display: true,
+            color: '#f8f9fa',
+            padding: 10,
+            font: {
+              size: 14,
+              weight: 300,
+              family: "Roboto",
+              style: 'normal',
+              lineHeight: 2
+            },
+          }
+        },
+      },
+    },
+  });
+
+  var ctx3 = document.getElementById("chart-line-luminosity").getContext("2d");
+
+  new Chart(ctx3, {
+    type: "line",
+    data: {
+
+      labels: ["S1", "S2", "S3", "S4", "S5"],
+      datasets: [{
+        label: "Luminosity",
+        tension: 0,
+        borderWidth: 0,
+        pointRadius: 5,
+        pointBackgroundColor: "rgba(255, 255, 255, .8)",
+        pointBorderColor: "transparent",
+        borderColor: "rgba(255, 255, 255, .8)",
+        borderWidth: 4,
+        backgroundColor: "transparent",
+        fill: true,
+
+        data: {{ lux }},
+        maxBarThickness: 6
+
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: true,
+            drawOnChartArea: true,
+            drawTicks: false,
+            borderDash: [5, 5],
+            color: 'rgba(255, 255, 255, .2)'
+          },
+          ticks: {
+            display: true,
+            padding: 10,
+            color: '#f8f9fa',
+            font: {
+              size: 14,
+              weight: 300,
+              family: "Roboto",
+              style: 'normal',
+              lineHeight: 2
+            },
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+            borderDash: [5, 5]
+          },
+          ticks: {
+            display: true,
+            color: '#f8f9fa',
+            padding: 10,
+            font: {
+              size: 14,
+              weight: 300,
+              family: "Roboto",
+              style: 'normal',
+              lineHeight: 2
+            },
+          }
+        },
+      },
+    },
+  });
+
+
+  var ctx4 = document.getElementById("chart-line-pressure").getContext("2d");
+
+  new Chart(ctx4, {
+    type: "line",
+    data: {
+
+      labels: ["S1", "S2", "S3", "S4", "S5"],
+      datasets: [{
+        label: "Pressure",
+        tension: 0,
+        borderWidth: 0,
+        pointRadius: 5,
+        pointBackgroundColor: "rgba(255, 255, 255, .8)",
+        pointBorderColor: "transparent",
+        borderColor: "rgba(255, 255, 255, .8)",
+        borderWidth: 4,
+        backgroundColor: "transparent",
+        fill: true,
+  
+        data: {{ press }},
+        maxBarThickness: 6
+
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: true,
+            drawOnChartArea: true,
+            drawTicks: false,
+            borderDash: [5, 5],
+            color: 'rgba(255, 255, 255, .2)'
+          },
+          ticks: {
+            display: true,
+            padding: 10,
+            color: '#f8f9fa',
+            font: {
+              size: 14,
+              weight: 300,
+              family: "Roboto",
+              style: 'normal',
+              lineHeight: 2
+            },
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+            borderDash: [5, 5]
+          },
+          ticks: {
+            display: true,
+            color: '#f8f9fa',
+            padding: 10,
+            font: {
+              size: 14,
+              weight: 300,
+              family: "Roboto",
+              style: 'normal',
+              lineHeight: 2
+            },
+          }
+        },
+      },
+    },
+  });
+
+</script>
+</body>
+</html>
